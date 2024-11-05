@@ -1,6 +1,6 @@
 const screen = document.querySelector("#screen");
 const digits = document.querySelectorAll("#number");
-
+let selectedOperator = false;
 
 function add(num1, num2) {
     let result = num1 + num2;
@@ -35,8 +35,14 @@ function addNumListeners(){
         let key = digits[i].textContent
         key = parseInt(key)
         digits[i].addEventListener("click", () => {
-            firstNum = firstNum.concat(key)
-            updateScreen(firstNum);
+            if (selectedOperator == false){
+                firstNum = firstNum.concat(key)
+                updateScreen(firstNum);
+            }
+            else {
+                secondNum = secondNum.concat(key)
+                updateScreen(secondNum);
+            }
         })
     }
 }
