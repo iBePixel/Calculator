@@ -4,21 +4,29 @@ const operators = document.querySelectorAll("#operator");
 let selectedOperator = false;
 
 function add(num1, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
   let result = num1 + num2;
   return result;
 }
 
 function subtract(num1, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
   let result = num1 - num2;
   return result;
 }
 
 function multiply(num1, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
   let result = num1 * num2;
   return result;
 }
 
 function divide(num1, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
   let result = num1 / num2;
   return result;
 }
@@ -53,59 +61,82 @@ function addOperatorListeners() {
   for (let i = 0; i < operators.length; i++) {
     let symbol = operators[i].textContent;
 
-    switch (operators[i].textContent) {
-      case "+":
+    if (operators[i].textContent == '+') {
         operators[i].addEventListener("click", () => {
           if (firstNum == "") {
           } else if (secondNum != "") {
           } else {
             operator = "plus";
             selectedOperator = true;
+            
           }
+          console.log(operators[i])
         });
-      case "-":
-        operators[i].addEventListener("click", () => {
-          if (firstNum == "") {
-          } else if (secondNum != "") {
-          } else {
-            operator = "minus";
-            selectedOperator = true;
-          }
-        });
-      case "X":
+    }
+    else if (operators[i].textContent == '-') {
+      operators[i].addEventListener("click", () => {
+        if (firstNum == "") {
+        } else if (secondNum != "") {
+        } else {
+          operator = "minus";
+          selectedOperator = true;
+          
+        }
+        console.log(operators[i])
+      });
+    }
+     else if (operators[i].textContent == 'X') {
         operators[i].addEventListener("click", () => {
           if (firstNum == "") {
           } else if (secondNum != "") {
           } else {
             operator = "multiply";
             selectedOperator = true;
+            
           }
-        });
-      case "/":
-        operators[i].addEventListener("click", () => {
-          if (firstNum == "") {
-          } else if (secondNum != "") {
-          } else {
-            operator = "divide";
-            selectedOperator = true;
-          }
-        });
-      case "=":
-        operators[i].addEventListener("click", () => {
-          if (firstNum == "") {
-          } else if (secondNum != "") {
-          } else {
-          }
+          console.log(operators[i])
         });
     }
+    else if (operators[i].textContent == '/') {
+      operators[i].addEventListener("click", () => {
+        if (firstNum == "") {
+        } else if (secondNum != "") {
+        } else {
+          operator = "divide";
+          selectedOperator = true;
+          
+        }
+        console.log(operators[i])
+      });
+  }
   }
 }
 
 addOperatorListeners();
 
 function operate(first, second, operator){
-    if (operator == "plus"){ }
-    else if (operator == "minus"){ }
-    else if (operator == "multiply"){ }
-    else if (operator == "divide") { }
+    if (operator == "plus"){
+      let g = add(first, second);
+      updateScreen(g);
+      firstNum = ""
+      secondNum = ""
+    }
+    else if (operator == "minus"){ 
+      let g = subtract(first, second);
+      updateScreen(g);
+      firstNum = ""
+      secondNum = ""
+     }
+    else if (operator == "multiply"){ 
+      let g = subtract(first, second);
+      updateScreen(g);
+      firstNum = ""
+      secondNum = ""
+     }
+    else if (operator == "divide") { 
+      let g = subtract(first, second);
+      updateScreen(g);
+      firstNum = ""
+      secondNum = ""
+    }
 }
