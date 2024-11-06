@@ -61,7 +61,7 @@ function addOperatorListeners() {
   for (let i = 0; i < operators.length; i++) {
     let symbol = operators[i].textContent;
 
-    if (operators[i].textContent == '+') {
+    if (operators[i].textContent === '+') {
         operators[i].addEventListener("click", () => {
           if (firstNum == "") {
           } else if (secondNum != "") {
@@ -83,7 +83,7 @@ function addOperatorListeners() {
         }
       });
     }
-     else if (operators[i].textContent == 'X') {
+     else if (operators[i].textContent === 'X') {
         operators[i].addEventListener("click", () => {
           if (firstNum == "") {
           } else if (secondNum != "") {
@@ -94,7 +94,7 @@ function addOperatorListeners() {
           }
         });
     }
-    else if (operators[i].textContent == '/') {
+    else if (operators[i].textContent === '/') {
       operators[i].addEventListener("click", () => {
         if (firstNum == "") {
         } else if (secondNum != "") {
@@ -135,14 +135,14 @@ function operate(first, second, operator){
       selectedOperator = false;
      }
     else if (operator == "multiply"){ 
-      let g = subtract(first, second);
+      let g = multiply(first, second);
       updateScreen(g);
       firstNum = ""
       secondNum = ""
       selectedOperator = false;
      }
     else if (operator == "divide") { 
-      let g = subtract(first, second);
+      let g = divide(first, second);
       updateScreen(g);
       firstNum = ""
       secondNum = ""
