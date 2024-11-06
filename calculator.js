@@ -70,7 +70,6 @@ function addOperatorListeners() {
             selectedOperator = true;
             
           }
-          console.log(operators[i])
         });
     }
     else if (operators[i].textContent == '-') {
@@ -82,7 +81,6 @@ function addOperatorListeners() {
           selectedOperator = true;
           
         }
-        console.log(operators[i])
       });
     }
      else if (operators[i].textContent == 'X') {
@@ -94,7 +92,6 @@ function addOperatorListeners() {
             selectedOperator = true;
             
           }
-          console.log(operators[i])
         });
     }
     else if (operators[i].textContent == '/') {
@@ -106,9 +103,17 @@ function addOperatorListeners() {
           selectedOperator = true;
           
         }
-        console.log(operators[i])
       });
   }
+  else if (operators[i].textContent == '=') {
+    operators[i].addEventListener("click", () => {
+      if (firstNum == "") {
+      } else {
+        operate(firstNum, secondNum, operator);
+        
+      }
+    });
+}
   }
 }
 
@@ -120,23 +125,27 @@ function operate(first, second, operator){
       updateScreen(g);
       firstNum = ""
       secondNum = ""
+      selectedOperator = false;
     }
     else if (operator == "minus"){ 
       let g = subtract(first, second);
       updateScreen(g);
       firstNum = ""
       secondNum = ""
+      selectedOperator = false;
      }
     else if (operator == "multiply"){ 
       let g = subtract(first, second);
       updateScreen(g);
       firstNum = ""
       secondNum = ""
+      selectedOperator = false;
      }
     else if (operator == "divide") { 
       let g = subtract(first, second);
       updateScreen(g);
       firstNum = ""
       secondNum = ""
+      selectedOperator = false;
     }
 }
