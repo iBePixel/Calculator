@@ -65,6 +65,10 @@ function addOperatorListeners() {
         operators[i].addEventListener("click", () => {
           if (firstNum == "") {
           } else if (secondNum != "") {
+            firstNum = operate(firstNum, secondNum, operator);
+            operator = "plus";
+            selectedOperator = true;
+            
           } else {
             operator = "plus";
             selectedOperator = true;
@@ -76,6 +80,9 @@ function addOperatorListeners() {
       operators[i].addEventListener("click", () => {
         if (firstNum == "") {
         } else if (secondNum != "") {
+          firstNum = operate(firstNum, secondNum, operator);
+          operator = "minus";
+          selectedOperator = true;
         } else {
           operator = "minus";
           selectedOperator = true;
@@ -87,6 +94,9 @@ function addOperatorListeners() {
         operators[i].addEventListener("click", () => {
           if (firstNum == "") {
           } else if (secondNum != "") {
+            firstNum = operate(firstNum, secondNum, operator);
+            operator = "multiply"
+            selectedOperator = true;
           } else {
             operator = "multiply";
             selectedOperator = true;
@@ -98,6 +108,9 @@ function addOperatorListeners() {
       operators[i].addEventListener("click", () => {
         if (firstNum == "") {
         } else if (secondNum != "") {
+            firstNum = operate(firstNum, secondNum, operator);
+            operator = "divide"
+            selectedOperator = true;
         } else {
           operator = "divide";
           selectedOperator = true;
@@ -126,6 +139,7 @@ function operate(first, second, operator){
       firstNum = ""
       secondNum = ""
       selectedOperator = false;
+      return g; 
     }
     else if (operator == "minus"){ 
       let g = subtract(first, second);
@@ -133,6 +147,7 @@ function operate(first, second, operator){
       firstNum = ""
       secondNum = ""
       selectedOperator = false;
+      return g; 
      }
     else if (operator == "multiply"){ 
       let g = multiply(first, second);
@@ -140,6 +155,7 @@ function operate(first, second, operator){
       firstNum = ""
       secondNum = ""
       selectedOperator = false;
+      return g; 
      }
     else if (operator == "divide") { 
       let g = divide(first, second);
@@ -147,5 +163,6 @@ function operate(first, second, operator){
       firstNum = ""
       secondNum = ""
       selectedOperator = false;
+      return g; 
     }
 }
