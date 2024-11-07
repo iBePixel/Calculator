@@ -61,22 +61,19 @@ function addOperatorListeners() {
   for (let i = 0; i < operators.length; i++) {
     let symbol = operators[i].textContent;
 
-    if (operators[i].textContent === '+') {
-        operators[i].addEventListener("click", () => {
-          if (firstNum == "") {
-          } else if (secondNum != "") {
-            firstNum = operate(firstNum, secondNum, operator);
-            operator = "plus";
-            selectedOperator = true;
-            
-          } else {
-            operator = "plus";
-            selectedOperator = true;
-            
-          }
-        });
-    }
-    else if (operators[i].textContent == '-') {
+    if (operators[i].textContent === "+") {
+      operators[i].addEventListener("click", () => {
+        if (firstNum == "") {
+        } else if (secondNum != "") {
+          firstNum = operate(firstNum, secondNum, operator);
+          operator = "plus";
+          selectedOperator = true;
+        } else {
+          operator = "plus";
+          selectedOperator = true;
+        }
+      });
+    } else if (operators[i].textContent == "-") {
       operators[i].addEventListener("click", () => {
         if (firstNum == "") {
         } else if (secondNum != "") {
@@ -86,83 +83,73 @@ function addOperatorListeners() {
         } else {
           operator = "minus";
           selectedOperator = true;
-          
         }
       });
-    }
-     else if (operators[i].textContent === 'X') {
-        operators[i].addEventListener("click", () => {
-          if (firstNum == "") {
-          } else if (secondNum != "") {
-            firstNum = operate(firstNum, secondNum, operator);
-            operator = "multiply"
-            selectedOperator = true;
-          } else {
-            operator = "multiply";
-            selectedOperator = true;
-            
-          }
-        });
-    }
-    else if (operators[i].textContent === '/') {
+    } else if (operators[i].textContent === "X") {
       operators[i].addEventListener("click", () => {
         if (firstNum == "") {
         } else if (secondNum != "") {
-            firstNum = operate(firstNum, secondNum, operator);
-            operator = "divide"
-            selectedOperator = true;
+          firstNum = operate(firstNum, secondNum, operator);
+          operator = "multiply";
+          selectedOperator = true;
+        } else {
+          operator = "multiply";
+          selectedOperator = true;
+        }
+      });
+    } else if (operators[i].textContent === "/") {
+      operators[i].addEventListener("click", () => {
+        if (firstNum == "") {
+        } else if (secondNum != "") {
+          firstNum = operate(firstNum, secondNum, operator);
+          operator = "divide";
+          selectedOperator = true;
         } else {
           operator = "divide";
           selectedOperator = true;
-          
         }
       });
-  }
-  else if (operators[i].textContent == '=') {
-    operators[i].addEventListener("click", () => {
-      if (firstNum == "") {
-      } else {
-        operate(firstNum, secondNum, operator);
-        
-      }
-    });
-}
+    } else if (operators[i].textContent == "=") {
+      operators[i].addEventListener("click", () => {
+        if (firstNum == "" || secondNum == "") { }
+        else {
+          operate(firstNum, secondNum, operator);
+        }
+      });
+    }
   }
 }
 
 addOperatorListeners();
 
-function operate(first, second, operator){
-    if (operator == "plus"){
-      let g = add(first, second);
-      updateScreen(g);
-      firstNum = ""
-      secondNum = ""
-      selectedOperator = false;
-      return g; 
-    }
-    else if (operator == "minus"){ 
-      let g = subtract(first, second);
-      updateScreen(g);
-      firstNum = ""
-      secondNum = ""
-      selectedOperator = false;
-      return g; 
-     }
-    else if (operator == "multiply"){ 
-      let g = multiply(first, second);
-      updateScreen(g);
-      firstNum = ""
-      secondNum = ""
-      selectedOperator = false;
-      return g; 
-     }
-    else if (operator == "divide") { 
-      let g = divide(first, second);
-      updateScreen(g);
-      firstNum = ""
-      secondNum = ""
-      selectedOperator = false;
-      return g; 
-    }
+function operate(first, second, operator) {
+  if (operator == "plus") {
+    let g = add(first, second);
+    updateScreen(g);
+    firstNum = "";
+    secondNum = "";
+    selectedOperator = false;
+    return g;
+  } else if (operator == "minus") {
+    let g = subtract(first, second);
+    updateScreen(g);
+    firstNum = "";
+    secondNum = "";
+    selectedOperator = false;
+    return g;
+  } else if (operator == "multiply") {
+    let g = multiply(first, second);
+    updateScreen(g);
+    firstNum = "";
+    secondNum = "";
+    selectedOperator = false;
+    return g;
+  } else if (operator == "divide") {
+    let g = divide(first, second);
+    updateScreen(g);
+    firstNum = "";
+    secondNum = "";
+    selectedOperator = false;
+    return g;
+  }
 }
