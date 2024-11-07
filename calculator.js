@@ -70,6 +70,18 @@ function addNumListeners() {
 
 addNumListeners();
 
+addEventListener("keydown", (g) => {
+  if(isFinite(g.key)){
+    if (selectedOperator == false) {
+      firstNum = firstNum.concat(g.key);
+      updateScreen(firstNum);
+    } else {
+      secondNum = secondNum.concat(g.key);
+      updateScreen(secondNum);
+    }
+  }
+})
+
 function addOperatorListeners() {
   for (let i = 0; i < operators.length; i++) {
     let symbol = operators[i].textContent;
