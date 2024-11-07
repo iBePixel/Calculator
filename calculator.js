@@ -1,6 +1,7 @@
 const screen = document.querySelector("#screen");
 const digits = document.querySelectorAll("#number");
 const operators = document.querySelectorAll("#operator");
+const clear = document.querySelector("#clear");
 let selectedOperator = false;
 
 function add(num1, num2) {
@@ -38,6 +39,14 @@ let operator = "";
 function updateScreen(number) {
   screen.textContent = number;
 }
+
+clear.addEventListener("click", () => {
+  firstNum = "";
+  secondNum = "";
+  operator = "";
+  selectedOperator = false;
+  updateScreen('')
+});
 
 function addNumListeners() {
   for (let i = 0; i < digits.length; i++) {
