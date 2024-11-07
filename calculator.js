@@ -28,8 +28,12 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   num1 = parseInt(num1);
   num2 = parseInt(num2);
-  let result = num1 / num2;
-  return result;
+  if (num1 == 0 || num2 == 0) {
+    return 'Cannot divide by 0'
+  } else {
+    let result = num1 / num2;
+    return result;
+  }
 }
 
 let firstNum = "";
@@ -45,7 +49,7 @@ clear.addEventListener("click", () => {
   secondNum = "";
   operator = "";
   selectedOperator = false;
-  updateScreen('')
+  updateScreen("");
 });
 
 function addNumListeners() {
@@ -120,8 +124,8 @@ function addOperatorListeners() {
       });
     } else if (operators[i].textContent == "=") {
       operators[i].addEventListener("click", () => {
-        if (firstNum == "" || secondNum == "") { }
-        else {
+        if (firstNum == "" || secondNum == "") {
+        } else {
           operate(firstNum, secondNum, operator);
         }
       });
