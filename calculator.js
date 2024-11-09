@@ -192,6 +192,19 @@ addEventListener("keydown", (g) => {
       updateScreen(secondNum);
     }
   }
+  else if (g.key === 'Backspace'){
+    if (selectedOperator == false) {
+        if (firstNum != "") {
+          firstNum = firstNum.slice(0, -1);
+          updateScreen(firstNum);
+        }
+      } else {
+        if (secondNum != "") {
+          secondNum = secondNum.slice(0, -1);
+          updateScreen(secondNum);
+        }
+      }
+  }
 });
 
 decimal.addEventListener("click", () => {
