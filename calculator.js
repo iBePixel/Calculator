@@ -3,6 +3,7 @@ const digits = document.querySelectorAll("#number");
 const operators = document.querySelectorAll("#operator");
 const clear = document.querySelector("#clear");
 const decimal = document.querySelector("#decimal");
+const backspace = document.querySelector("#backspace");
 let selectedOperator = false;
 
 function add(num1, num2) {
@@ -124,6 +125,20 @@ decimal.addEventListener("click", () => {
     }
   }
 });
+
+backspace.addEventListener("click", () => {
+    if (selectedOperator == false) {
+        if( firstNum != ''){
+            firstNum = firstNum.slice(0, -1);
+            updateScreen(firstNum);
+        }
+    } else {
+        if(secondNum != ''){
+            secondNum = secondNum.slice(0, -1);
+            updateScreen(secondNum);
+        }
+    }
+  });
 
 function addOperatorListeners() {
   for (let i = 0; i < operators.length; i++) {
