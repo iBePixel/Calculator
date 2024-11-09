@@ -5,6 +5,9 @@ const clear = document.querySelector("#clear");
 const decimal = document.querySelector("#decimal");
 const backspace = document.querySelector("#backspace");
 let selectedOperator = false;
+let firstNum = "";
+let secondNum = "";
+let operator = "";
 
 function add(num1, num2) {
   if (num1.includes(".") || num2.includes(".")) {
@@ -64,21 +67,9 @@ function divide(num1, num2) {
   }
 }
 
-let firstNum = "";
-let secondNum = "";
-let operator = "";
-
 function updateScreen(value) {
   screen.textContent = value;
 }
-
-clear.addEventListener("click", () => {
-  firstNum = "";
-  secondNum = "";
-  operator = "";
-  selectedOperator = false;
-  updateScreen("");
-});
 
 function addNumListeners() {
   for (let i = 0; i < digits.length; i++) {
@@ -95,50 +86,6 @@ function addNumListeners() {
     });
   }
 }
-
-addNumListeners();
-
-addEventListener("keydown", (g) => {
-  if (isFinite(g.key)) {
-    if (selectedOperator == false) {
-      firstNum = firstNum.concat(g.key);
-      updateScreen(firstNum);
-    } else {
-      secondNum = secondNum.concat(g.key);
-      updateScreen(secondNum);
-    }
-  }
-});
-
-decimal.addEventListener("click", () => {
-  if (selectedOperator == false) {
-    if (firstNum.includes(".")) {
-    } else {
-      firstNum = firstNum.concat(".");
-      updateScreen(firstNum);
-    }
-  } else {
-    if (secondNum.includes(".")) {
-    } else {
-      secondNum = secondNum.concat(".");
-      updateScreen(secondNum);
-    }
-  }
-});
-
-backspace.addEventListener("click", () => {
-    if (selectedOperator == false) {
-        if( firstNum != ''){
-            firstNum = firstNum.slice(0, -1);
-            updateScreen(firstNum);
-        }
-    } else {
-        if(secondNum != ''){
-            secondNum = secondNum.slice(0, -1);
-            updateScreen(secondNum);
-        }
-    }
-  });
 
 function addOperatorListeners() {
   for (let i = 0; i < operators.length; i++) {
@@ -203,8 +150,6 @@ function addOperatorListeners() {
   }
 }
 
-addOperatorListeners();
-
 function operate(first, second, operator) {
   if (operator == "plus") {
     let g = add(first, second);
@@ -236,3 +181,56 @@ function operate(first, second, operator) {
     return g;
   }
 }
+
+addEventListener("keydown", (g) => {
+  if (isFinite(g.key)) {
+    if (selectedOperator == false) {
+      firstNum = firstNum.concat(g.key);
+      updateScreen(firstNum);
+    } else {
+      secondNum = secondNum.concat(g.key);
+      updateScreen(secondNum);
+    }
+  }
+});
+
+decimal.addEventListener("click", () => {
+  if (selectedOperator == false) {
+    if (firstNum.includes(".")) {
+    } else {
+      firstNum = firstNum.concat(".");
+      updateScreen(firstNum);
+    }
+  } else {
+    if (secondNum.includes(".")) {
+    } else {
+      secondNum = secondNum.concat(".");
+      updateScreen(secondNum);
+    }
+  }
+});
+
+backspace.addEventListener("click", () => {
+  if (selectedOperator == false) {
+    if (firstNum != "") {
+      firstNum = firstNum.slice(0, -1);
+      updateScreen(firstNum);
+    }
+  } else {
+    if (secondNum != "") {
+      secondNum = secondNum.slice(0, -1);
+      updateScreen(secondNum);
+    }
+  }
+});
+
+clear.addEventListener("click", () => {
+  firstNum = "";
+  secondNum = "";
+  operator = "";
+  selectedOperator = false;
+  updateScreen("");
+});
+
+addNumListeners();
+addOperatorListeners();
