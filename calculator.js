@@ -205,6 +205,71 @@ addEventListener("keydown", (g) => {
         }
       }
   }
+  else if (g.key === '.') {
+    if (selectedOperator == false) {
+        if (firstNum.includes(".")) {
+        } else {
+          firstNum = firstNum.concat(".");
+          updateScreen(firstNum);
+        }
+      } else {
+        if (secondNum.includes(".")) {
+        } else {
+          secondNum = secondNum.concat(".");
+          updateScreen(secondNum);
+        }
+      }
+  }
+  else if (g.key === '+') {
+    if (firstNum == "") {
+    } else if (secondNum != "") {
+      firstNum = operate(firstNum, secondNum, operator);
+      operator = "plus";
+      selectedOperator = true;
+    } else {
+      operator = "plus";
+      selectedOperator = true;
+    }
+  }
+  else if (g.key === '-') {
+    if (firstNum == "") {
+    } else if (secondNum != "") {
+      firstNum = operate(firstNum, secondNum, operator);
+      operator = "minus";
+      selectedOperator = true;
+    } else {
+      operator = "minus";
+      selectedOperator = true;
+    }
+  }
+  else if (g.key == '*') {
+    if (firstNum == "") {
+    } else if (secondNum != "") {
+      firstNum = operate(firstNum, secondNum, operator);
+      operator = "multiply";
+      selectedOperator = true;
+    } else {
+      operator = "multiply";
+      selectedOperator = true;
+    }
+  }
+  else if (g.key === '/') {
+    if (firstNum == "") {
+    } else if (secondNum != "") {
+      firstNum = operate(firstNum, secondNum, operator);
+      operator = "divide";
+      selectedOperator = true;
+    } else {
+      operator = "divide";
+      selectedOperator = true;
+    }
+  }
+  else if (g.key === "="){
+    if (firstNum == "" || secondNum == "") {
+    } else {
+      operate(firstNum, secondNum, operator);
+    }
+  }
 });
 
 decimal.addEventListener("click", () => {
